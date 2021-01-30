@@ -10,52 +10,37 @@ import Control.Effect.Reader
 import Control.Effect.Error
 import Control.Effect.State
 import Control.Effect.Writer
+import Control.Monad
 import Test.Hspec
 
-data Accum s :: Effect where
-  Look :: Accum s m s
-  Accum :: s -> Accum s m ()
+data Count :: Effect where
+  Increment :: Count m ()
 
-type AskListC i = CompositionC
- '[ ReinterpretSimpleC (Ask i) '[State [i], Throw ()]
-  , StateC [i]
+type CountC i = CompositionC
+ '[ ReinterpretSimpleC Count '[Throw (), State Int]
   , ThrowC ()
+  , StateC Int
   ]
 
-runAskList :: ( Carrier m
-              , Threaders '[ReaderThreads, ErrorThreads, StateThreads] m p
-              )
-           => [i]
-           -> AskListC i m a
-           -> m (Maybe a)
-runAskList l =
-   fmap (either (const Nothing) Just)
+runCount :: ( Carrier m
+            , Threaders '[ReaderThreads, ErrorThreads, StateThreads] m p
+            )
+         => CountC i m a
+         -> m (Int, Maybe a)
+runCount =
+   runState 0
+ . fmap (either (const Nothing) Just)
  . runThrow
- . evalState l
  . reinterpretSimple (\case
-     Ask -> get >>= \case
-       (x:xs) -> put xs >> return x
-       _      -> throw mempty
+     Increment -> do
+       i <- get
+       when (i >= 10) $ throw ()
+       put $! i + 1
    )
  . runComposition
 
-runAccum :: ( Carrier m
-            , Monoid s
-            , Threaders '[ReaderThreads, StateThreads] m p
-            )
-         => ReinterpretSimpleC (Accum s) '[State s] (StateC s m) a
-         -> m (s, a)
-runAccum =
-   runState mempty
- . reinterpretSimple (\case
-     Look -> get
-     Accum s -> modify' (<> s)
-   )
-
 idState :: Eff (State s) m => m ()
-idState = do
-  s <- get
-  put s
+idState = get >>= put
 
 intState :: Eff (State Int) m => m ()
 intState = put 10

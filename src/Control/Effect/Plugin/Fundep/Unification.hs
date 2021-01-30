@@ -20,8 +20,8 @@ data SolveContext
   = -- | In the context of a function definition.
     FunctionDef
     -- | In the context of running an interpreter. The 'Bool' corresponds to
-    -- whether we are only trying to solve a single 'Member' constraint right
-    -- now. If so, we *must* produce a unification wanted.
+    -- whether we are only trying to solve a single 'Control.Effect.Member' constraint
+    -- right now. If so, we *must* produce a unification wanted.
   | InterpreterUse Bool
   deriving (Eq, Ord, Show)
 

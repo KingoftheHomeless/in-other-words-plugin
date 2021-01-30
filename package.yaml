@@ -4,8 +4,7 @@ github:              "KingoftheHomeless/in-other-words-plugin"
 license:             BSD3
 author:              "Love Waern"
 maintainer:          "combiner8761@gmail.com"
-copyright:           "2020 Love Waern"
-build-type:          Custom
+copyright:           "2021 Love Waern"
 
 extra-source-files:
 - README.md
@@ -25,18 +24,13 @@ dependencies:
 - transformers >= 0.5.2.0 && < 0.6
 - containers >= 0.5 && < 0.7
 
-custom-setup:
-  dependencies:
-    - base >= 4.9 && < 5
-    - Cabal
-
 library:
   source-dirs: src
   generated-other-modules:
   - Paths_in_other_words_plugin
 
 tests:
-  polysemy-plugin-test:
+  in-other-words-plugin-test:
     main:                Main.hs
     source-dirs:         test
     ghc-options:
@@ -47,7 +41,7 @@ tests:
     build-tools:
     - hspec-discover
     dependencies:
-    - in-other-words >= 0.1 && < 0.2
+    - in-other-words >= 0.1 && < 0.3
     - in-other-words-plugin
     - hspec >= 2.6.0 && < 3
 

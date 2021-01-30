@@ -4,7 +4,7 @@ cabal-version: 2.0
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: e01c6193ad24a80d5b8e4b9e95f9a77042a803ba75fb75ada0d18aea4437dfb4
+-- hash: cac3988c3f4d02cb5c79aabd127b20ebe5c611c73ceae0fc62ab890773cda9f9
 
 name:           in-other-words-plugin
 version:        0.1.0.0
@@ -15,10 +15,10 @@ homepage:       https://github.com/KingoftheHomeless/in-other-words-plugin#readm
 bug-reports:    https://github.com/KingoftheHomeless/in-other-words-plugin/issues
 author:         Love Waern
 maintainer:     combiner8761@gmail.com
-copyright:      2020 Love Waern
+copyright:      2021 Love Waern
 license:        BSD3
 license-file:   LICENSE
-build-type:     Custom
+build-type:     Simple
 extra-source-files:
     README.md
     ChangeLog.md
@@ -26,11 +26,6 @@ extra-source-files:
 source-repository head
   type: git
   location: https://github.com/KingoftheHomeless/in-other-words-plugin
-
-custom-setup
-  setup-depends:
-      Cabal
-    , base >=4.9 && <5
 
 library
   exposed-modules:
@@ -55,7 +50,7 @@ library
     , transformers >=0.5.2.0 && <0.6
   default-language: Haskell2010
 
-test-suite polysemy-plugin-test
+test-suite in-other-words-plugin-test
   type: exitcode-stdio-1.0
   main-is: Main.hs
   other-modules:
@@ -73,7 +68,7 @@ test-suite polysemy-plugin-test
     , ghc >=8.4.4 && <9
     , ghc-tcplugins-extra >=0.3 && <0.5
     , hspec >=2.6.0 && <3
-    , in-other-words >=0.1 && <0.2
+    , in-other-words >=0.1 && <0.3
     , in-other-words-plugin
     , syb >=0.7 && <0.8
     , transformers >=0.5.2.0 && <0.6
