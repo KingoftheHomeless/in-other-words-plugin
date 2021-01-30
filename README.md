@@ -1,4 +1,5 @@
 # in-other-words-plugin
+[![Hackage](https://img.shields.io/hackage/v/in-other-words-plugin.svg?logo=haskell)](https://hackage.haskell.org/package/in-other-words-plugin)
 [![build GHC 8.6](https://github.com/KingoftheHomeless/in-other-words-plugin/workflows/build%20GHC%208.6/badge.svg)](https://github.com/KingoftheHomeless/in-other-words-plugin/actions?query=workflow%3A%22build+GHC+8.6%22)
 [![build GHC 8.8](https://github.com/KingoftheHomeless/in-other-words-plugin/workflows/build%20GHC%208.8/badge.svg)](https://github.com/KingoftheHomeless/in-other-words-plugin/actions?query=workflow%3A%22build+GHC+8.8%22)
 [![build GHC 8.10](https://github.com/KingoftheHomeless/in-other-words-plugin/workflows/build%20GHC%208.10/badge.svg)](https://github.com/KingoftheHomeless/in-other-words-plugin/actions?query=workflow%3A%22build+GHC+8.10%22)
